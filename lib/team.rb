@@ -3,7 +3,7 @@ class Team
 
   def initialize(country)
     @country = country
-    @players = []
+    @players = {}
     @eliminated = false
   end
 
@@ -11,18 +11,14 @@ class Team
     @eliminated
   end
 
-  def add_player(player_name)
-    @players << player_name
+  def add_player(player)
+    key = player.position
+    value = player.name
+    @players[key] = value
   end
 
   def players_by_position(position)
-    @players.find_all do |player|
-      player.position == position
-    end
-  end
-
-  def create_team_position_hash
-
+    @players[position]
   end
 
   def eliminated
